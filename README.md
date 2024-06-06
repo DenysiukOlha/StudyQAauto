@@ -2,30 +2,30 @@
 
 This project contains various automated tests, including API tests, database tests, and UI tests. The project is designed for practice and learning automated testing.
 
-## Table of Contents
+Project Structure
+Description of the project structure to help understand the organization of the tests.
 
-- [Automated Testing Project](#automated-testing-project)
-- [Table of Contents](#table-of-contents)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Usage](#usage)
-  - [Running API Tests](#running-api-tests)
-  - [Running Database Tests](#running-database-tests)
-  - [Running UI Tests](#running-ui-tests)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Installation
-
-Instructions for setting up the project on your local machine.
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/testing-project.git
-
-# Navigate to the project directory
-cd testing-project
-
-# Install dependencies
-pip install -r requirements.txt
+Копіювати код
+StudyQAauto/
+│
+├── config/
+│   └── config.py
+│
+├── modules/
+│   ├── api/clients
+│   │   ├── __init__.py
+│   │   └── github.py
+│   ├── common
+│   │   └── __init__.py
+│   └── ui/page_objects
+│   │   └── __init__.py
+│
+├── ui_tests/
+│   ├── api
+│   │   ├── test_api.py
+│   │   ├── test_fixture.py
+│   │   └──test_github_api.py
+│   └── ui
+│   │   └── test_ui.py
+│
+└── README.md
