@@ -5,7 +5,7 @@ This project contains various automated tests, including API tests, database tes
 Project Structure
 Description of the project structure to help understand the organization of the tests.
 
-Копіювати код
+
 StudyQAauto/
 │
 ├── config/
