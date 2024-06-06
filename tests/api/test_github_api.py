@@ -31,3 +31,18 @@ def test_repo_cannot_be_found(github_api):
 def test_repo_with_single_char_be_found(github_api):
     r = github_api.search_repo('s')
     assert r['total_count'] != 0
+
+@pytest.mark.api
+def test_emoji_are_present(github_api):
+    r = github_api.get_emojis()
+    assert len(r) > 0
+
+@pytest.mark.api
+def test_emodji_alien(github_api):
+    r = github_api.get_emojis()
+    assert 'alien' in r
+
+@pytest.mark.api
+def test_emodji_zomro(github_api):
+    r = github_api.get_emojis()
+    assert 'zomro' not in r
