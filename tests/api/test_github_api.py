@@ -46,3 +46,11 @@ def test_emodji_alien(github_api):
 def test_emodji_zomro(github_api):
     r = github_api.get_emojis()
     assert 'zomro' not in r
+
+#так і не працює :(
+@pytest.mark.api
+def test_commit_author(github_api):
+    owner = 'octocat'
+    repo = 'Hello-World'
+    r = github_api.get_commit_author(owner, repo)
+    assert r['name'] == 'Monalisa Octocat'
