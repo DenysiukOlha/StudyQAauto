@@ -22,6 +22,12 @@ class GitHub:
         return body
     
     def get_commit_author(self, owner, repo):
-        r = requests.get(f'https://api.github.com/repos/{owner}/{repo}/commits')
+        url = f'https://api.github.com/repos/{owner}/{repo}/commits'
+        r = requests.get(url)
+        
+        # перевірка на успішний статус код
+        if r.status_code != 200:
+            r.raise_for_status()
+
         body = r.json()
         return body
