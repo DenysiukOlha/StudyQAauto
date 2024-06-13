@@ -21,13 +21,17 @@ class GitHub:
 
         return body
     
-    def get_commit_author(self, owner, repo):
+    def get_commits(self, owner, repo):
         url = f'https://api.github.com/repos/{owner}/{repo}/commits'
         r = requests.get(url)
-        
-        # перевірка на успішний статус код
-        if r.status_code != 200:
-            r.raise_for_status()
-
-        body = r.json()
-        return body
+        r.raise_for_status()
+        # body = r.json()
+        return r
+    
+    def get_commit_status_code(self, owner, repo):
+        r = self.get_commits(owner, repo)
+        return r.status_code
+    
+    def get_commits_body(self, owner, repo):
+        r = self.get_commits(owner, repo)
+        return r.json()

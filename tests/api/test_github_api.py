@@ -52,23 +52,30 @@ def test_emodji_zomro(github_api):
     assert 'zomro' not in r
 
 
-# так і не працює :(
+# незрозуміла єресь
 @pytest.mark.api
 def test_commit_author(github_api):
     owner = 'octocat'
     repo = 'Hello-World'
-    r = github_api.get_commit_author(owner, repo)
-    print(r)
-    assert len(r) > 0
+    commits = github_api.get_commits_body(owner, repo)
+    assert len(commits) > 0, "Expected non-empty list of commits"
 
-    # перевірка першого еементу списку
-    first_commit = r[0]
-    print(first_commit['commit']['author']['name'])
+    # перевірка першого елементу списку
+    first_commit = commits[0]
+    # print(first_commit['commit']['author']['name'])
     assert 'commit' in first_commit, "First commit should have 'commit' key"
     assert 'author' in first_commit['commit'], "Commit should have 'author' key"
     assert 'name' in first_commit['commit']['author'], "Author should have 'name' key"
+    author_name = first_commit['commit']['author']['name']
+    print(author_name)
     
-    # assert author_name == 'Monalisa Octocat', f"Expected 'Monalisa Octocat', but got {author_name}"
-    
+    assert author_name == 'The Octocat', f"Expected 'Monalisa Octocat', but got {author_name}"
     # assert first_commit['commit']['author']['name'] == 'The Octocat'
 
+
+@pytest.mark.api
+def test_request_is_200(github_api):
+    owner = 'octocat'
+    repo = 'Hello-World'
+    status_code = github_api.get_commit_status_code(owner, repo)
+    assert status_code == 200, f'Expected status code 200, but got {status_code}'
