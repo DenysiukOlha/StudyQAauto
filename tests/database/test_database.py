@@ -30,7 +30,7 @@ def test_check_user_sergii():
 @pytest.mark.database
 def test_product_qnt_update():
     db = Database()
-    db.update_product_qnt_by_id(1,25)
+    db.update_product_qnt_by_id(1, 25)
     water_qnt = db.select_product_qnt_by_id(1)
 
     assert water_qnt[0][0] == 25
